@@ -1,4 +1,4 @@
-package main
+package is_isomorphic_205
 
 import (
 	"github.com/stretchr/testify/assert"
