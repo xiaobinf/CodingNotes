@@ -8,6 +8,13 @@ package is_same_tree_100
  *     Right *TreeNode
  * }
  */
+
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
+}
+
 func isSameTree(p *TreeNode, q *TreeNode) bool {
 	if p == nil && q == nil {
 		return true
