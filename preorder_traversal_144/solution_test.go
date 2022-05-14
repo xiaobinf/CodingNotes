@@ -26,9 +26,6 @@ func preOrder(root *TreeNode, arr *[]int) {
 
 func preorderTraversal(root *TreeNode) []int {
 	var arr []int
-	if root == nil {
-		return arr
-	}
 	preOrder(root, &arr)
 	return arr
 }
