@@ -51,14 +51,16 @@ func permute1(nums []int) [][]int {
 
 func backtrack1(nums []int, res *[][]int, track []int) {
 	if len(track) == len(nums) {
-		*res = append(*res, track)
+		*res = append(*res, append([]int{}, track...))
 		track = []int{}
 		return
 	}
+
 	for i := 0; i < len(nums); i++ {
 		if contains(track, nums[i]) {
 			continue
 		}
+
 		track = append(track, nums[i])
 		backtrack1(nums, res, track)
 		track = track[:len(track)-1]
