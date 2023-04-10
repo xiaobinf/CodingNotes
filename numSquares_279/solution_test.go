@@ -5,7 +5,9 @@ import (
 	"testing"
 )
 
-/*这里使用动态规划来做。时间复杂度O(nlogn)，空间复杂度O(n)。代码非常精简
+/*这里使用动态规划来做。
+
+一个数=一个数的平方+f(剩余值) 即遍历这个数
 
 定义一个函数f(n)表示我们要求的解。f(n)的求解过程为：
 f(n) = 1 + min{
@@ -16,6 +18,7 @@ f(n) = 1 + min{
 func numSquares(n int) int {
 	var dp = make([]int, n+1)
 	dp[0], dp[1] = 0, 1
+	// 自底向上构造
 	for i := 1; i <= n; i++ {
 		var MIN = 2147483647
 		for j := 1; j*j <= i; j++ {
