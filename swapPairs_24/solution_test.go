@@ -24,12 +24,13 @@ func swapPairs(head *ListNode) *ListNode {
 	dummy := &ListNode{Next: head}
 	p := dummy
 	for p.Next != nil && p.Next.Next != nil {
-		p.Next.Next = p
-		p.Next = p.Next.Next
-		p = p.Next
+		node1 := p.Next
+		node2 := p.Next.Next
+		p.Next, node1.Next, node2.Next = node2, node2.Next, node1
+		p = node1
 	}
 
-	return dummy
+	return dummy.Next
 }
 
 func swapPairs1(head *ListNode) *ListNode {
