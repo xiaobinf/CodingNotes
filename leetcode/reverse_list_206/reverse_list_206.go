@@ -1,4 +1,4 @@
-package LeetCode
+package reverse_list_206
 
 /**
  * Definition for singly-linked list.

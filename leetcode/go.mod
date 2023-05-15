@@ -1,4 +1,4 @@
-module LeetCode
+module CodingNotes
 
 go 1.18
 
