@@ -115,10 +115,10 @@ func main() {
     var wg sync.WaitGroup
     m := make(map[int]int)
 
-    for i := 0; i < 1000; i++ {
+    for i := 0; i < 100; i++ {
         wg.Add(1)
         go func() {
-            for j := 0; j < 1000; j++ {
+            for j := 0; j < 100; j++ {
                 m[j] = j
             }
             wg.Done()
