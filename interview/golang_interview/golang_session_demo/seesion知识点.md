@@ -1,0 +1,17 @@
+session，简而言之就是在服务器上保存用户操作的历史信息。服务器使用session id来标识session，session id由服务器负责产生，保证随机性与唯一性，相当于一个随机密钥，避免在握手或传输中暴露用户真实密码。但该方式下，仍然需要将发送请求的客户端与session进行对应，所以可以借助cookie机制来获取客户端的标识（即session id），也可以通过GET方式将id提交给服务器。
+
+Gin框架本身不提供session管理功能，但是可以通过使用第三方库来实现session管理。以下是一些常用的session管理库：
+
+gorilla/sessions：这是一个流行的session管理库，支持cookie和存储后端，例如内存、文件、数据库等。
+
+go-session/session：这是一个轻量级的session管理库，支持cookie和存储后端，例如内存、文件、数据库等。
+
+scs/session：这是一个基于gorilla/sessions的session管理库，提供了更多的功能和选项。
+
+
+参考文章：
+https://www.kancloud.cn/kancloud/web-application-with-golang/44177
+
+ession机制是一种服务器端的机制，服务器使用一种类似于散列表的结构(也可能就是使用散列表)来保存信息。
+
+但程序需要为某个客户端的请求创建一个session的时候，服务器首先检查这个客户端的请求里是否包含了一个session标识－称为session id，如果已经包含一个session id则说明以前已经为此客户创建过session，服务器就按照session id把这个session检索出来使用(如果检索不到，可能会新建一个，这种情况可能出现在服务端已经删除了该用户对应的session对象，但用户人为地在请求的URL后面附加上一个JSESSION的参数)。如果客户请求不包含session id，则为此客户创建一个session并且同时生成一个与此session相关联的session id，这个session id将在本次响应中返回给客户端保存。
