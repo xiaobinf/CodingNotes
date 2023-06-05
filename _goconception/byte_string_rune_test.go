@@ -29,7 +29,12 @@ func TestByteStringRune(t *testing.T) {
 	fmt.Println(arr1, arr2, arr3)
 
 	// 定义一维列表
-
+	var ar []int
+	ar = append(ar, 1)
+	fmt.Println(ar)
 	// 定义二维列表
+	var ar1 [][]int
+	ar1 = append(ar1, []int{1, 2, 3})
+	fmt.Println(ar1)
 
 }
