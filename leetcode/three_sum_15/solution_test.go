@@ -46,3 +46,39 @@ func TestName(t *testing.T) {
 	threeSum([]int{})
 	threeSum([]int{0})
 }
+
+func threeSum1(nums []int) [][]int {
+	sort.Ints(nums)
+	// 定义返回值
+	var res = make([][]int, 0)
+	for i := 0; i < len(nums); i++ {
+		if i > 0 && nums[i] == nums[i-1] {
+			continue
+		}
+
+		var target = -1 * nums[i]
+		k := len(nums) - 1
+		//固定住i，对j，k做移动
+		for j := i + 1; j < len(nums); j++ {
+			if j > i+1 && nums[j] == nums[j-1] {
+				continue
+			}
+
+			// 固定住j 对k做移动
+			for k > j && nums[j]+nums[k] > target {
+				k--
+			}
+
+			if j == k {
+				break
+			}
+
+			if nums[j]+nums[k] == target {
+				res = append(res, []int{i, j, k})
+			}
+
+		}
+	}
+
+	return res
+}
