@@ -19,6 +19,7 @@ func threeSum(nums []int) [][]int {
 		k := n - 1
 		target := -1 * nums[i]
 		for j := i + 1; j < n; j++ {
+			// 去除重复解
 			if j > i+1 && nums[j] == nums[j-1] {
 				continue
 			}
@@ -46,3 +47,6 @@ func TestName(t *testing.T) {
 	threeSum([]int{})
 	threeSum([]int{0})
 }
+
+
+// 
