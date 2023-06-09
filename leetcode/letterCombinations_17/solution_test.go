@@ -54,3 +54,40 @@ func TestName(t *testing.T) {
 	fmt.Println(letterCombinations("22"))
 	fmt.Println("16622133"[2] - '0')
 }
+
+
+// 回溯算法的基础框架
+func letterCombinations(digits string) []string {
+	if digits == "" {
+		return []string{}
+	}
+	var res []string
+	var track string
+	var table = map[int]string{
+		2: "abc",
+		3: "def",
+		4: "ghi",
+		5: "jkl",
+		6: "mno",
+		7: "pqrs",
+		8: "tuv",
+		9: "wxyz",
+	}
+	backtrack(digits, &res, track, 0, &table)
+	return res
+}
+
+// backtrack 这里的level就是digits的下表 也是解空间树的层 "23"
+func backtrack(digits string, res *[]string, track string, level int, table *map[int]string) {
+	if len(track) == len(digits) {
+		*res = append(*res, track)
+		track = ""
+		return
+	}
+
+	for i:=0; i<len((*table)[int(digits[level]-'0')]);i++ {
+		track = track+string((*table)[int(digits[level]-'0')][i])
+		backtrack(digits, res, track, level+1, table)
+		track = track[:len(track)-1]
+	}
+}

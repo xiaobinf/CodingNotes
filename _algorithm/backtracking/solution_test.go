@@ -57,7 +57,9 @@ func backtrack1(nums []int, res *[][]int, track []int) {
 	}
 
 	for i := 0; i < len(nums); i++ {
+		// 做选择 是否满足限界和约束条件 
 		if contains(track, nums[i]) {
+			// 不满足 所以跳过
 			continue
 		}
 
@@ -79,4 +81,40 @@ func contains(nums []int, num int) bool {
 
 func TestName(t *testing.T) {
 	fmt.Println(permute1([]int{1, 2, 3, 4, 5}))
+}
+
+
+// 复习
+func  permute2(nums []int) [][]int {
+	var res [][]int
+	var track []int
+	backtrack2(nums, &res, track)
+	return res
+}
+
+func backtrack2(nums []int, res *[][]int, track []int) {
+	if len(track)==len(nums) {
+		*res = append(*res, append([]int{}, track...))
+		track = []int{}
+		return
+	}
+
+	for i:=0;i<len(nums);i++ {
+		if contains1(track, nums[i]) { // 做选择 跳过
+			continue
+		}
+
+		track = append(track, nums[i])
+		backtrack2(nums, res, track)
+		track = track[:len(track)-1] // 回退一个元素
+	}
+}
+
+func contains1(nums []int, num int) bool {
+	for i := 0; i < len(nums); i++ {
+		if nums[i] == num {
+			return true
+		}
+	}
+	return false
 }
