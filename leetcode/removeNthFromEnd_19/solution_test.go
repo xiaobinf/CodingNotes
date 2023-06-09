@@ -4,6 +4,7 @@ type ListNode struct {
 }
 
  func removeNthFromEnd(head *ListNode, n int) *ListNode {
+	// 设置前置节点，防止头节点被删除
 	dummy := &ListNode{0, head}
 	var slow,fast = dummy, head
 	for i:=0;i<n;i++ {
