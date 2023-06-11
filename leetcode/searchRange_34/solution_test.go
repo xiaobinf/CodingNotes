@@ -1,7 +1,8 @@
-package main
+package searchRange_34
 
 import (
 	"fmt"
+	"testing"
 )
 
 //func searchRange(nums []int, target int) []int {
@@ -34,8 +35,8 @@ import (
 //	return []int{start, end}
 //}
 
-func main() {
-	fmt.Println(123)
+func TestName(t *testing.T) {
+	fmt.Println(searchRange([]int{5, 7, 7, 8, 8, 10}, 6))
 }
 
 // 复习
@@ -46,16 +47,18 @@ func searchRange(nums []int, target int) []int {
 	var mid int
 	for left <= right {
 		mid = (left + right) / 2
-		start, end = mid, mid
 		if nums[mid] == target {
+			start, end = mid, mid // 此处赋值
 			// 左右跳转
-			for start > 0 && nums[start] == target { // 这里越过界了  返回时需要调整
+			for start > 0 && nums[start-1] == target { // 这里越过界了  返回时需要调整
 				start--
 			}
 
-			for end < len(nums)-1 && nums[end] == target {
+			for end < len(nums)-1 && nums[end+1] == target {
 				end++
 			}
+
+			break
 		} else if nums[mid] < target {
 			left++
 		} else {
@@ -63,5 +66,5 @@ func searchRange(nums []int, target int) []int {
 		}
 	}
 
-	return []int{start + 1, end - 1}
+	return []int{start, end}
 }
