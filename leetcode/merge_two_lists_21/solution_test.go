@@ -31,12 +31,50 @@ type ListNode struct {
 //}
 
 // 非递归方式
+//func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
+//	head := &ListNode{
+//		Val:  0,
+//		Next: nil,
+//	}
+//	cur := head
+//	for list1 != nil && list2 != nil {
+//		if list1.Val < list2.Val {
+//			cur.Next = list1
+//			list1 = list1.Next
+//			cur = cur.Next
+//		} else {
+//			cur.Next = list2
+//			list2 = list2.Next
+//			cur = cur.Next
+//		}
+//	}
+//
+//	if list1 == nil {
+//		cur.Next = list2
+//	} else {
+//		cur.Next = list1
+//	}
+//
+//	return head.Next
+//}
+
+/**
+ * Definition for singly-linked list.
+ * type ListNode struct {
+ *     Val int
+ *     Next *ListNode
+ * }
+ */
+// 复习 合并两个有序列表
+
 func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
-	head := &ListNode{
+	// 定义哨兵节点
+	dummy := &ListNode{
 		Val:  0,
 		Next: nil,
 	}
-	cur := head
+	cur := dummy
+
 	for list1 != nil && list2 != nil {
 		if list1.Val < list2.Val {
 			cur.Next = list1
@@ -49,11 +87,11 @@ func mergeTwoLists(list1 *ListNode, list2 *ListNode) *ListNode {
 		}
 	}
 
-	if list1 == nil {
-		cur.Next = list2
-	} else {
+	if list1 != nil {
 		cur.Next = list1
+	} else {
+		cur.Next = list2
 	}
 
-	return head.Next
+	return dummy.Next
 }
