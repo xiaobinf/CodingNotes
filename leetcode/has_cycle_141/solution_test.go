@@ -27,3 +27,23 @@ func hasCycle(head *ListNode) bool {
 	}
 	return true
 }
+
+
+// 复习 判断是否有环
+func hasCycle(head *ListNode) bool {
+	if head==nil ||head.Next==nil{
+		return false
+	}
+
+	var slow, fast = head, head.Next
+	for slow!=fast{
+		// 判断是否走到了尾结点
+		if fast==nil &&fast.Next==nil{
+			return false
+		}
+		slow = slow.Next
+		fast = fast.Next.Next
+	}
+
+	return true
+}
