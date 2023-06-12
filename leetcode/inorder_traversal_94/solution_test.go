@@ -23,17 +23,34 @@ type TreeNode struct {
 	Right *TreeNode
 }
 
-func inorder(root *TreeNode, res *[]int) {
-	if root == nil {
-		return
-	}
-	inorder(root.Left, res)
-	*res = append(*res, root.Val)
-	inorder(root.Right, res)
-}
+//func inorder(root *TreeNode, res *[]int) {
+//	if root == nil {
+//		return
+//	}
+//	inorder(root.Left, res)
+//	*res = append(*res, root.Val)
+//	inorder(root.Right, res)
+//}
+//
+//func inorderTraversal(root *TreeNode) []int {
+//	var res []int
+//	inorder(root, &res)
+//	return res
+//}
 
+// 复习
 func inorderTraversal(root *TreeNode) []int {
 	var res []int
 	inorder(root, &res)
 	return res
+}
+
+func inorder(root *TreeNode, res *[]int) {
+	if root == nil {
+		return
+	}
+
+	inorder(root.Left, res)
+	*res = append(*res, root.Val)
+	inorder(root.Right, res)
 }
