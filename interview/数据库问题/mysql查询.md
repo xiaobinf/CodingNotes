@@ -64,3 +64,4 @@ select a.name,b.job from A a  full join B b on a.id=b.A_id
 null　　程序员
 
 
+# 
