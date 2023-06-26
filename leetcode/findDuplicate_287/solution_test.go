@@ -5,6 +5,7 @@ import (
 	"testing"
 )
 
+// 错误解法
 func findDuplicate(nums []int) int {
 	var num = (1 + len(nums) - 1) * (len(nums) - 1) / 2
 	var num1 = 0
