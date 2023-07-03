@@ -3,11 +3,13 @@
 ```go
 func dailyTemperatures(T []int) []int {
     n := len(T)
+    // dp存放子问题的解
     dp := make([]int, n)
     for i := n - 2; i >= 0; i-- {
         j := i + 1
         for j < n && T[i] >= T[j] {
             if dp[j] > 0 {
+                // j向后跳了位置
                 j += dp[j]
             } else {
                 j = n
