@@ -27,3 +27,11 @@ func deleteDuplicates(head *ListNode) *ListNode {
   }
   return head
 }
+
+
+// 复习
+func deleteDuplicates(head *ListNode) *ListNode {
+  if head == nil || head.Next == nil {
+    return head
+  }
+}
