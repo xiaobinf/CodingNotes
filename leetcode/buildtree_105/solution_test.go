@@ -19,7 +19,7 @@ func buildTree(preorder []int, inorder []int) *TreeNode {
 		Right: nil,
 	}
 
-	index := getIndex(inorder, preorder[0])
+	index := getIndex(inorder, preorder[0]) // index可以理解为左子树的长度
 	root.Left = buildTree(preorder[1:index+1], inorder[0:index])
 	root.Right = buildTree(preorder[index+1:], inorder[index+1:])
 	return root
@@ -37,3 +37,6 @@ func getIndex(arr []int, num int) int {
 func TestName(t *testing.T) {
 
 }
+
+// 从前序和中序 构建二叉树
+

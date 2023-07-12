@@ -16,6 +16,7 @@ func wordBreak(s string, wordDict []string) bool {
 	for i := 0; i < len(s); i++ { // 判断dp[i]
 		for j := 0; j <= i; j++ {
 			if j == 0 {
+				// 完整的字符串被出现在字典中
 				if contains(s[j:i+1], wordDict) {
 					fmt.Println(s[j : i+1])
 					dp[i] = true

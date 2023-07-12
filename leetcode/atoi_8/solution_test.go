@@ -45,6 +45,7 @@ func (a *Automation) getCol(c byte) int {
 
 func (a *Automation) updateAutomation(c byte) {
 	a.state = a.table[a.state][a.getCol(c)]
+	// 判断溢出
 	if a.state == "in_number" {
 		a.ans = a.ans*10 + int(c-'0')
 		if a.sign == 1 {
